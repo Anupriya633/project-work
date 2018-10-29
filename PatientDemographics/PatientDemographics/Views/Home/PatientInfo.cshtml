@@ -1,0 +1,77 @@
+﻿<script src="Scripts/jquery-2.1.1.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+   // $("$#patient").hide();
+    var uri = 'api/values';
+    $(document).ready(function () {
+        $.getJSON(uri)
+            .done(function (data) {
+                //  $("$#patient").show();
+                $.each(data, function (key, item) {
+                    $('#patient').append("<tr><td>" + item.ForeName + "</td>" + "<td>" + item.Surname + "</td>" + "<td>" + item.DateOfBirth + "</td>" + "<td>" + item.Gender + "</td></tr>");
+                });
+            });
+    });
+    //var uri = 'api/values';
+    //function getdata() {
+    //    $.getJSON(uri)
+    //        .done(function (data) {
+    //          //  $("$#patient").show();
+    //            $.each(data, function (key, item) {
+    //                $('#patient').append("<tr><td>" + item.ForeName + "</td>" + "<td>" + item.Surname + "</td>" + "<td>" + item.DateOfBirth + "</td>" + "<td>" + item.Gender + "</td></tr>");
+    //            });
+    //        });
+    //}
+</script>
+
+
+
+<h1>Enter Patient Details</h1>
+<form id="form1" method="post" action="api/values/complex"
+      enctype="application/x-www-form-urlencoded">
+    <div>
+        <label for="foreName">Forename:</label><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><input name="foreName" type="text" required />
+    </div>
+    <div>
+        <label for="surname">Surname:</label><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><input name="surname" type="text" required />
+    </div>
+    <div>
+        <label for="gender">Gender:</label><span>&nbsp;&nbsp;&nbsp;&nbsp;</span> @Html.RadioButton("Gender", "Male")<span>Male</span>
+        @Html.RadioButton("Gender", "Female") <span>Female</span>
+    </div>
+    <div>
+        <label for="dateOfBirth">DateofBirth:</label><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><input name="dateOfBirth" type="text" placeholder="dd-mm-yyyy" />
+    </div>
+    <div>
+        <label for="telephoneNumber">Telephone</label>
+    </div>
+    <div>
+        <lable for="home">Home:</lable><input name="home" type="text" />
+    </div>
+    <div>
+        <label for="work">Work:</label> <input name="work" type="text" />
+    </div>
+    <div>
+        <label for="mobile">Mobile:</label><input name="mobile" type="text" />
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>
+
+<div>
+    <h1>Available Patient Details</h1>
+    @*<input type="button" value="View" onclick="getdata();" />*@
+</div>
+<div>
+    <table id="patient" cellpadding="2" cellspacing="2" border="1" width="400px">
+        <tr>
+            <td style="background-color: gray; color: white">Forename</td>
+            <td style="background-color: gray; color: white">Surname</td>
+            <td style="background-color: gray; color: white">DateOfBirth</td>
+            <td style="background-color: gray; color:white">Gender</td>
+        </tr>
+    </table>
+</div>

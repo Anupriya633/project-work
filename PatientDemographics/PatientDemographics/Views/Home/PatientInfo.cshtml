@@ -4,7 +4,7 @@
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
 <script type="text/javascript">
    // $("$#patient").hide();
-    var uri = 'api/values';
+    var uri = 'api/patient';
     $(document).ready(function () {
         $.getJSON(uri)
             .done(function (data) {
@@ -27,51 +27,84 @@
 </script>
 
 
+<div class="jumbotron">
+    <div class="container">
+        <h3>Enter Patient Details</h3>
+        <form id="form1" method="post" action="api/patient/Patient"
+              enctype="application/x-www-form-urlencoded" class="form-horizontal" style="max-width:450px;">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="foreName">Forename:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" name="foreName" type="text" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="surname">Surname:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" name="surname" type="text" required />
+                </div>
+            </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="gender">Gender:</label>
+                    <div class="col-sm-10">
+                        @Html.RadioButton("Gender", "Male")<span>Male</span>
+                        @Html.RadioButton("Gender", "Female") <span>Female</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="dateOfBirth">DateofBirth:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" name="dateOfBirth" type="text" placeholder="dd-mm-yyyy" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="telephoneNumber">Telephone Numbers</label>
+                </div>
 
-<h1>Enter Patient Details</h1>
-<form id="form1" method="post" action="api/values/complex"
-      enctype="application/x-www-form-urlencoded">
-    <div>
-        <label for="foreName">Forename:</label><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><input name="foreName" type="text" required />
-    </div>
-    <div>
-        <label for="surname">Surname:</label><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><input name="surname" type="text" required />
-    </div>
-    <div>
-        <label for="gender">Gender:</label><span>&nbsp;&nbsp;&nbsp;&nbsp;</span> @Html.RadioButton("Gender", "Male")<span>Male</span>
-        @Html.RadioButton("Gender", "Female") <span>Female</span>
-    </div>
-    <div>
-        <label for="dateOfBirth">DateofBirth:</label><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><input name="dateOfBirth" type="text" placeholder="dd-mm-yyyy" />
-    </div>
-    <div>
-        <label for="telephoneNumber">Telephone</label>
-    </div>
-    <div>
-        <lable for="home">Home:</lable><input name="home" type="text" />
-    </div>
-    <div>
-        <label for="work">Work:</label> <input name="work" type="text" />
-    </div>
-    <div>
-        <label for="mobile">Mobile:</label><input name="mobile" type="text" />
-    </div>
-    <div>
-        <input type="submit" value="Submit" />
-    </div>
+                <div class="form-group">
+                    <lable class="col-sm-2 control-label" for="home">Home:</lable>
+                    <div class="col-sm-10">
+                        <input class="form-control" name="home" type="text" />
+               
+                    </div>    
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="work">Work:</label>
+
+                    <div class="col-sm-10">
+                        <input class="form-control" name="work" type="text" />
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="mobile">Mobile:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" name="mobile" type="text" />
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <input type="submit" value="Submit" />
+                    </div>
 </form>
+        </div>
 
-<div>
-    <h1>Available Patient Details</h1>
-    @*<input type="button" value="View" onclick="getdata();" />*@
-</div>
-<div>
-    <table id="patient" cellpadding="2" cellspacing="2" border="1" width="400px">
-        <tr>
-            <td style="background-color: gray; color: white">Forename</td>
-            <td style="background-color: gray; color: white">Surname</td>
-            <td style="background-color: gray; color: white">DateOfBirth</td>
-            <td style="background-color: gray; color:white">Gender</td>
-        </tr>
-    </table>
-</div>
+        <div class="container">
+
+            <div>
+                <h3>Available Patient Details</h3>
+                @*<input type="button" value="View" onclick="getdata();" />*@
+            </div>
+            <div>
+                <table id="patient" cellpadding="2" cellspacing="2" border="1" width="400px">
+                    <tr>
+                        <td style="background-color: gray; color: white">Forename</td>
+                        <td style="background-color: gray; color: white">Surname</td>
+                        <td style="background-color: gray; color: white">DateOfBirth</td>
+                        <td style="background-color: gray; color:white">Gender</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
